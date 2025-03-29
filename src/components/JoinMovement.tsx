@@ -172,16 +172,18 @@ export default function JoinMovement() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-purple-950 text-white">
-      {/* Back Button */}
-      <button
-        onClick={handleBack}
-        className="fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 text-white hover:text-purple-400 transition-colors rounded-full bg-purple-600/20 backdrop-blur-sm hover:bg-purple-600/30"
-        aria-label="Go back"
-      >
-        <ArrowLeft className="w-5 h-5" />
-        <span className="text-sm font-medium">Back</span>
-      </button>
+    <div className="min-h-screen bg-gradient-to-b from-black to-purple-950 text-white pt-16">
+      {/* Back Button - only show if in a selection process */}
+      {(selectedCountry || selectedSize) && (
+        <button
+          onClick={handleBack}
+          className="fixed top-20 left-4 z-30 flex items-center gap-2 px-4 py-2 text-white hover:text-purple-400 transition-colors rounded-full bg-purple-600/20 backdrop-blur-sm hover:bg-purple-600/30"
+          aria-label="Go back"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          <span className="text-sm font-medium">Back</span>
+        </button>
+      )}
 
       <div className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
