@@ -100,9 +100,12 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), (req, res) => 
   res.send();
 });
 
-// Serve the preview.html file for any routes that don't match an API endpoint
+// Serve static files from the React build directory
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Handle React routing, return all requests to React app
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'preview.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(port, () => {
